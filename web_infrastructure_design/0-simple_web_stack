@@ -1,0 +1,28 @@
+# What is a server?
+A server is a computer that provides services to other machines, called clients. here it hosts the website, manages user requests and stores data.
+
+# What is the purpose of a domain name?
+The domain name foobar.com allows you to access a site in a simple and memorable way, without having to remember its IP address.
+
+# What type of DNS record is used for www.foobar.com?
+This is a type A DNS record. It makes the link between the name www.foobar.com and the IP address 8.8.8.8, which points to the server.
+
+# What is the role of Nginx (the web server)?
+Nginx is responsible for receiving requests from visitors via the HTTP/HTTPS protocol. It directly serves static files (such as HTML, CSS, JS) and transfers other requests to the application.
+
+# What is the application server used for?
+It executes the application code, often written in PHP in a LAMP stack. It handles complex requests, interacts with the database, and returns a dynamically generated response.
+
+# What is the role of the MySQL database?
+It permanently stores all important data 
+
+# How do the server and the user communicate?
+Communication is via the HTTP (or HTTPS) protocol, based on the TCP/IP stack. The user sends a request via their browser, and the server responds via the Internet network.
+
+# Single point of failure (SPOF):
+If the server goes down, nothing works. There is no recourse.
+
+# Any intervention (updating the code, restarting the service, etc...) results in a temporary shutdown of the site.
+
+# Not very scalable:
+With a single machine, it is difficult to manage a lot of traffic. You can't spread the load without adding new servers.
