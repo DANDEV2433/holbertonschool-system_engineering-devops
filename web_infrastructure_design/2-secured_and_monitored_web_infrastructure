@@ -1,0 +1,44 @@
+# Added elements and their purpose
+SSL certificate: Used to secure exchanges between the user and the site (HTTPS). It protects sensitive data.
+
+3 Firewalls: Protect the various elements of the system by blocking unauthorised traffic.
+
+3 Monitoring agents: Monitor server activity and detect problems.
+
+# Role of firewalls
+They filter network traffic to prevent malicious or unauthorised connections.
+
+# Why HTTPS
+HTTPS encrypts data sent by the user to prevent it being intercepted (for example: passwords).
+
+# Why monitor
+This makes it possible to:
+
+Detect bugs or failures quickly
+
+Track performance (e.g. traffic, errors)
+
+Receive alerts if something goes wrong
+
+# How monitoring works
+Software (agent) installed on the servers:
+
+Reads log files
+
+Observes system performance
+
+Sends this data to a central tool for analysis (exemple sumologic)
+
+# How to monitor QPS (requests per second)
+We can :
+
+Read the web server log files
+
+Or use a tool that displays the number of requests per second (e.g. Prometheus export for Nginx)
+
+# Possible problems with this architecture
+SSL terminated at load balancer level: traffic afterwards is no longer encrypted → risk if the internal network is hacked.
+
+A single MySQL write database: if it goes down, it's no longer possible to write data → you need a backup plan.
+
+All the servers have the same roles: not flexible, difficult to upgrade, a single problem can break everything.
