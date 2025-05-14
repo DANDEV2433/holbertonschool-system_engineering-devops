@@ -1,0 +1,57 @@
+Task1 server
+# load balancer (HAProxy)?
+A load balancer is a component that distributes incoming traffic to multiple backend servers. It improves performance and ensures availability.
+
+# What does this infrastructure include?
+1 Load Balancer (HAProxy): Receives all incoming traffic and sends requests to Server 1 or Server 2.
+
+2 Web/Application servers:
+
+Each contains:
+
+Nginx (serves static files)
+
+PHP (executes dynamic code)
+
+Application files (your code)
+
+MySQL:
+
+Server 1 → Primary (handles writes)
+
+Server 2 → Replica (read-only)
+
+Domain name: foobar.com points to the load balancer via an A record (www.foobar.com → IP)
+
+# What DNS record is used?
+Still an A record, pointing www.foobar.com to the IP address of the load balancer.
+
+# How does HAProxy distribute traffic?
+Uses Round Robin algorithm.
+
+Each request goes to the next available server in order (Server 1 → Server 2 → Server 1, etc.).
+
+# What is the difference between Active-Active and Active-Passive?
+Active-Active: All servers handle requests at the same time → used here.
+
+Active-Passive: One server is active, others wait to take over in case of failure.
+
+# How does Primary-Replica database work?
+The Primary database handles writes and read.
+
+The Replica synchronizes from the Primary and can be used for reads.
+
+# Issues in this infrastructure
+SPOF (Single Point of Failure): If the load balancer fails → all traffic is blocked.
+
+Security:No monitoring:
+
+If a server crashes, there's no alert or logging system.
+
+No firewall → open to attacks.
+
+No HTTPS → data is unencrypted.
+
+No monitoring:
+
+If a server crashes, there's no alert or logging system.
