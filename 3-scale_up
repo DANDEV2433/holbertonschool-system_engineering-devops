@@ -1,0 +1,44 @@
+1. HAProxy Load Balancer (Active/Passive Cluster)
+distributes incoming traffic between servers according to their role (web or application).
+Ensures high availability (HA) in the event of failure of one of the nodes.
+The SSL certificate is managed at this level to secure client HTTPS connections.
+
+2. Web server (Nginx)
+Serves static files only (HTML, CSS, JS).
+Relieves the application server of simple requests.
+Better performance and separation of responsibilities.
+
+3. Application Server (PHP)
+Executes dynamic code (PHP): request processing, business logic, database calls.
+Separate from web server for better scaling (horizontal or vertical).
+Integrates a QPS (queries per second) monitoring system to track load.
+
+4. Database (MySQL - Read Replica)
+Stores persistent application data.
+Using a read replica separates reads and writes, increasing read performance.
+Placed behind a firewall to guarantee security.
+
+5. Fourth Server
+Can have several roles depending on requirements:
+
+*Supervision/monitoring server (real-time monitoring of your infrastructure's health) examples: Zabbix, Nagios, Datadog, Centreon
+Collects data on CPU, RAM, disks, network traffic.
+Checks if services are still running (web, PHP, DB...).
+Triggers alerts (email, SMS, Slack...) in the event of anomalies.
+Performance history (logs, graphs, trends).
+
+*Administration server (bastion host)
+server acts as a secure gateway to other internal servers (often via SSH).
+SSH access restricted: only administrators can connect.
+Serves as a secure bridge to administer other servers.
+All connections are logged (logs, audits).
+
+*Metrics collector (e.g. Prometheus)
+collects technical metrics at regular intervals from other services (app, DB, network...).
+retrieves data exposed by exporters (agents) installed on each server
+stores metrics in a time base
+Examples of metrics:
+API response time
+Number of requests received per second (QPS)
+HTTP error rate (404, 500...)
+Database latency
