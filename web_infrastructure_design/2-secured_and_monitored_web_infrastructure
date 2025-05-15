@@ -39,6 +39,6 @@ Or use a tool that displays the number of requests per second (e.g. Prometheus e
 # Possible problems with this architecture
 SSL terminated at load balancer level: traffic afterwards is no longer encrypted → risk if the internal network is hacked.
 
-A single MySQL write database: if it goes down, it's no longer possible to write data → you need a backup plan.
+A single MySQL write database: if it goes down, it's no longer possible to write data (backup plan ?).
 
 All the servers have the same roles: not flexible, difficult to upgrade, a single problem can break everything.
