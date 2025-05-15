@@ -4,7 +4,4 @@
 # Task 1
 ![Capture d'écran 2025-05-14 101619](https://github.com/user-attachments/assets/a5d35409-5a94-4295-a701-7e6f382cf748)
 # Task 2
-![Capture d'écran 2025-05-14 170051](https://github.com/user-attachments/assets/3fab5bc7-1379-4244-aa5f-844483fc5614)
-
-
-
+![Capture d'écran 2025-05-15 092912](https://github.com/user-attachments/assets/0bc95a18-d18b-42b8-a3b4-7a3dd12c0dda)
